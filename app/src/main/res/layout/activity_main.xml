@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <ImageButton
+        android:id="@+id/animalCrossing"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/icons8_animal_crossing_240"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="animal crossing"/>
+
+    <ImageButton
+        android:id="@+id/dota"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/icons8_dota_240"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="Dota"/>
+
+    <ImageButton
+        android:id="@+id/overwatch"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/icons8_overwatch_240"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="overwatch"/>
+
+    <ImageButton
+        android:id="@+id/wow"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/icons8_world_of_warcraft_240"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="world of warcraft"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
