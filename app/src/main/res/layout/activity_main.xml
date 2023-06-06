@@ -44,4 +44,10 @@
         android:scaleType="fitCenter"
         android:layout_marginBottom="10dp"
         android:contentDescription="world of warcraft"/>
+
+    <Button
+        android:id="@+id/button_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close" />
 </androidx.appcompat.widget.LinearLayoutCompat>

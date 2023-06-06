@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -24,11 +25,13 @@ public class MainActivity extends AppCompatActivity {
             private final String title;
             private final String msg;
             private final int id;
+            private final int image;
 
-            public Game(String title, String msg, int id) {
+            public Game(String title, String msg, int id, int image) {
                 this.title = title;
                 this.msg = msg;
                 this.id = id;
+                this.image = image;
             }
 
             public String getTitle() {
@@ -42,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
             public int getImageId() {
                 return id;
             }
+
+            public int getImage() {
+                return image;
+            }
         }
 
 
@@ -50,35 +57,44 @@ public class MainActivity extends AppCompatActivity {
                 "perteneciente al género de Arena de batalla en línea ARTS " +
                 "(«estrategia " +
                 "de acción en tiempo real»), también conocido en inglés como MOBA, " +
-                "fue lanzado el 9 de julio del año 2013.", R.id.dota));
+                "fue lanzado el 9 de julio del año 2013.", R.id.dota, R.drawable.icons8_dota_240));
         games.add(new Game("Animal Crossing", "Animal Crossing (どうぶつの森もり Dōbutsu no Mori?, lit. «Bosque de " +
                 "los animales») es una serie de videojuegos de simulación de vida publicada por " +
                 "Nintendo y creada por Katsuya Eguchi y Hisashi Nogami, " +
                 "en la que el jugador vive en un pueblo habitado por animales antropomórficos, " +
-                "llevando a cabo diversas actividades", R.id.animalCrossing));
+                "llevando a cabo diversas actividades", R.id.animalCrossing, R.drawable.icons8_animal_crossing_240));
         games.add(new Game("Overwatch", "Overwatch fue un videojuego de disparos en primera persona multijugador, " +
                 "desarrollado por Blizzard Entertainment. Fue lanzado al público el 24 de mayo " +
                 "del 2016, para las plataformas PlayStation 4, Xbox One y " +
-                "Microsoft Windows; posteriormente fue lanzado para Nintendo Switch", R.id.overwatch));
+                "Microsoft Windows; posteriormente fue lanzado para Nintendo Switch", R.id.overwatch, R.drawable.icons8_overwatch_240));
         games.add(new Game("WoW", "World of Warcraft (abreviado como WoW, literalmente en español Mundo de " +
                 "Warcraft) es un videojuego de rol multijugador masivo en línea desarrollado por " +
                 "Blizzard Entertainment. Es el cuarto juego lanzado establecido en el universo " +
                 "fantástico de Warcraft, el cual fue introducido por primera vez por Warcraft: " +
-                "Orcs & Humans en 1994", R.id.wow));
+                "Orcs & Humans en 1994", R.id.wow, R.drawable.icons8_world_of_warcraft_240));
 
         for (final Game game : games) {
             ImageButton imageButton = findViewById(game.getImageId());
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showAlertDialog(game.getTitle(), game.getMessage(), game.getImageId());
+                    showAlertDialog(game.getTitle(), game.getMessage(), game.getImage());
                 }
             });
         }
 
+        Button button_close = findViewById(R.id.button_close);
+
+        button_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onDestroy();
+            }
+        });
+
     }
 
-    private void showAlertDialog(String title, String message, int imageId) {
+    private void showAlertDialog(String title, String message, int image) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle(title)
                 .setMessage(message)
@@ -88,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                         intent.putExtra("msg", message);
                         intent.putExtra("title", title);
-                        intent.putExtra("imageId", imageId);
+                        intent.putExtra("image", image);
                         startActivity(intent);
                     }
                 })

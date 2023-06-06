@@ -18,13 +18,18 @@ public class MainActivity2 extends AppCompatActivity {
 
         String msg = getIntent().getStringExtra("msg");
         String title = getIntent().getStringExtra("title");
-        int id_game = getIntent().getIntExtra("imageId",0);
+        int image_game2 = getIntent().getIntExtra("image",0);
 
         TextView title_game = findViewById(R.id.title_game);
         title_game.setText(title);
 
 
         Button button_back = findViewById(R.id.back_button);
+        ImageView image_game = findViewById(R.id.imageView3);
+
+        if (image_game2 != 0) {
+            image_game.setImageResource(image_game2);
+        }
 
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
