@@ -10,16 +10,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.ejercicio7_modulo4_android.databinding.ActivityMainBinding;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ActivityMainBinding mainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = mainBinding.getRoot();
+        setContentView(view);
 
         class Game {
             private final String title;
@@ -73,8 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 "fantástico de Warcraft, el cual fue introducido por primera vez por Warcraft: " +
                 "Orcs & Humans en 1994", R.id.wow, R.drawable.icons8_world_of_warcraft_240));
 
+
         for (final Game game : games) {
-            ImageButton imageButton = findViewById(game.getImageId());
+            ImageButton imageButton = mainBinding.getRoot().findViewById(game.getImageId());
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -83,9 +91,8 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        Button button_close = findViewById(R.id.button_close);
 
-        button_close.setOnClickListener(new View.OnClickListener() {
+        mainBinding.buttonClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onDestroy();
